@@ -25,15 +25,21 @@
         Enviar Nuevo Mail
       </header>
 
+      <!-- formulario -->
+
       <form id="enviar-mail" class="py-10 px-5 max-w-lg mx-auto">
+        <!-- email -->
         <div class="mb-10">
           <label for="email">Para:</label>
+
           <input
             class="bg-gray-100 border shadow p-3 w-full"
             id="email"
             type="email"
           />
         </div>
+
+        <!-- asunto -->
         <div class="mb-10">
           <label for="asunto">Asunto</label>
 
@@ -43,7 +49,7 @@
             type="text"
           />
         </div>
-
+        <!-- mensaje -->
         <div class="mb-10">
           <label for="mensaje">Mensaje</label>
           <textarea
@@ -51,7 +57,7 @@
             id="mensaje"
           ></textarea>
         </div>
-
+        <!-- spinner -->
         <div id="spinner">
           <div class="sk-chase">
             <div class="sk-chase-dot"></div>
@@ -64,6 +70,7 @@
         </div>
 
         <div class="flex justify-between">
+          <!-- boton enviar -->
           <button
             id="enviar"
             class="
@@ -85,7 +92,7 @@
             Enviar
             <i class="material-icons right text-white ml-3">send</i>
           </button>
-
+          <!-- boton resetar -->
           <button
             id="resetBtn"
             class="
