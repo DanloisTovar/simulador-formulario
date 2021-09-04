@@ -1,5 +1,6 @@
 /* Boton enviar */
 const btnEnviar = document.querySelector('#enviar');
+const btnReset = document.querySelector('#resetBtn');
 
 /* expreciones regulares */
 const regex =
@@ -21,6 +22,12 @@ function eventListeners() {
   campoMail.addEventListener('blur', validarFormulario);
   campoAsunto.addEventListener('blur', validarFormulario);
   campoMensaje.addEventListener('blur', validarFormulario);
+
+  /* enviar email: */
+  formulario.addEventListener('submit', enviarEmail);
+
+  /* boton reset: */
+  btnReset.addEventListener('click', resetearFormulario);
 }
 
 /* funciones */
@@ -105,4 +112,52 @@ function mostrarError(mensaje) {
     /* para que aparezca arriba: */
     // formulario.insertBefore(mensajeError, document.querySelector('.mb-10'));
   }
+}
+
+function enviarEmail(e) {
+  e.preventDefault();
+  /* mostar spinner */
+  const spinner = document.querySelector('#spinner');
+  /* una vez que se envie el mail se cambia el status a mostar spiner: */
+  spinner.style.display = 'flex';
+
+  /* ocultar spinner despues de 3 segundos: */
+
+  /* crear parrafo de mensaje de exito: */
+  const parrafo = document.createElement('p');
+
+  setTimeout(() => {
+    spinner.style.display = 'none';
+
+    /* notificacion de mensaje enviado: */
+    parrafo.textContent = 'El mensaje fue enviado con exito!';
+    /* estilos parrafo */
+    parrafo.classList.add(
+      'text-center',
+      'my-10',
+      'p-5',
+      'bg-green-500',
+      'text-white',
+      'font-bold',
+      'uppercase'
+    );
+
+    /* insertar antes del spinner */
+    formulario.insertBefore(parrafo, spinner);
+    console.log('enviado');
+
+    setTimeout(() => {
+      /* remover el mensaje de envio exitoso: */
+
+      parrafo.remove();
+      resetearFormulario();
+      iniciarApp();
+    }, 5000);
+  }, 3000);
+}
+
+/* resetear formulario: */
+
+function resetearFormulario() {
+  formulario.reset();
 }
